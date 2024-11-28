@@ -2,8 +2,23 @@ import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key});
+  final int id;
+  final String title;
+  final double price;
+  final String description;
+  final String category;
+  final String image;
+  final Function() onAddCart;
 
+  const ProductCard(
+      {super.key,
+      required this.id,
+      required this.title,
+      required this.price,
+      required this.description,
+      required this.category,
+      required this.image,
+      required this.onAddCart});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,8 +33,8 @@ class ProductCard extends StatelessWidget {
                 border: Border.all(color: Colors.grey.shade400, width: 1),
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Image.asset(
-                "assets/headset.png",
+              child: Image.network(
+                image,
                 fit: BoxFit.contain,
               )),
           Positioned(
@@ -31,9 +46,9 @@ class ProductCard extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Colors.grey.shade300, shape: BoxShape.circle),
               child: IconButton(
-                  onPressed: () => {},
+                  onPressed: () => onAddCart(),
                   icon: Icon(
-                    Icons.favorite,
+                    Icons.shopping_cart_rounded,
                     color: Colors.black,
                     size: 16,
                   )),
@@ -43,15 +58,18 @@ class ProductCard extends StatelessWidget {
 
         //  price
         Text(
-          "349",
+          price.toString(),
           style: AppStyles.medium,
         ),
         Text(
-          "SONY Premium Wireless Headphones",
+          category,
           style: AppStyles.medium,
         ),
         Text(
-          "Modal: WH-1000XM4, Black",
+          title,
+          softWrap: true,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 2,
           style: AppStyles.extrasmallgrey,
         )
 

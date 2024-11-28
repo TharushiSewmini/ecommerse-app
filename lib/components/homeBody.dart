@@ -1,11 +1,15 @@
 import 'package:ecommerce_app/components/dealsCard.dart';
 import 'package:ecommerce_app/components/productCard.dart';
+import 'package:ecommerce_app/pages/home/bloc/home_bloc.dart';
+import 'package:ecommerce_app/pages/home/model/product_model.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeBody extends StatefulWidget {
-  const HomeBody({super.key});
+  final List<Product> products;
+  HomeBody({super.key, required this.products});
 
   @override
   State<HomeBody> createState() => _HomeBodyState();
@@ -69,7 +73,7 @@ class _HomeBodyState extends State<HomeBody> {
           //Deals Banners
           Container(
             width: double.infinity,
-         height: 250,
+            height: 250,
             child: PageView.builder(
                 padEnds: false,
                 controller: controller,
@@ -93,19 +97,31 @@ class _HomeBodyState extends State<HomeBody> {
           Padding(
             padding: const EdgeInsets.only(top: 20),
             child: GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.65,
-                crossAxisSpacing: 10,
-               
-              ),
-              itemCount: 10,
-              itemBuilder: (context, index) => const ProductCard(),
-            ),
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.65,
+                  crossAxisSpacing: 10,
+                ),
+                itemCount: widget.products.length,
+                itemBuilder: (context, index) {
+                  List<Product> products = widget.products;
+
+                  return ProductCard(
+                    id: products[index].id,
+                    title: products[index].title,
+                    price: products[index].price,
+                    description: products[index].description,
+                    category: products[index].category,
+                    image: products[index].image,
+                    onAddCart: () {
+                      BlocProvider.of<HomeBloc>(context)
+                          .add(AddToCartEvent(products[index]));
+                    },
+                  );
+                }),
           ),
-  
         ]),
       ),
     );

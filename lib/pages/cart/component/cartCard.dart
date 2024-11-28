@@ -3,16 +3,20 @@ import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:flutter/material.dart';
 
 class CartCard extends StatelessWidget {
-  String itemImageuRL;
-  String itemName;
-  String itemPrice;
-  String itemDescription;
+  final int id;
+  final String title;
+  final double price;
+  final String description;
+  final String category;
+  final String image;
   CartCard(
       {super.key,
-      required this.itemImageuRL,
-      required this.itemName,
-      required this.itemPrice,
-      required this.itemDescription});
+      required this.id,
+      required this.title,
+      required this.price,
+      required this.description,
+      required this.category,
+      required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +36,7 @@ class CartCard extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image.network(
-                itemImageuRL,
+                image,
                 width: double.maxFinite,
                 height: 80,
                 fit: BoxFit.cover,
@@ -45,26 +49,28 @@ class CartCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  width: 100,
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // price
                       Text(
-                        "\$ $itemPrice",
+                        "\$ $price",
                         style: AppStyles.mediumred,
                       ),
-                              
+
                       // product name
                       Text(
-                        itemName,
+                        title,
+                        softWrap: true,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                         style: AppStyles.medium,
                       ),
-                              
+
                       //  description
                       Text(
-                        itemDescription,
+                        description,
                         softWrap: true,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,

@@ -1,9 +1,12 @@
-
-import 'package:ecommerce_app/pages/landing/landing.dart';
+import 'package:ecommerce_app/pages/home/bloc/home_bloc.dart';
+import 'package:ecommerce_app/pages/landing/ui/landing.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(BlocProvider(
+    create: (context) => HomeBloc()..add(HomeInitialEvent()),
+    child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +19,15 @@ class MyApp extends StatelessWidget {
       title: 'e-commerce',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.black,
+            primary: Colors.black,
+            onPrimary: Colors.white,
+            surface: Colors.white,
+            onSurface: Colors.black,
+            error: Colors.red,
+            onError: Colors.white,
+            brightness: Brightness.light),
         useMaterial3: true,
       ),
       home: Landing(),
