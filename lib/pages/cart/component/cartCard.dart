@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/pages/cart/component/calculationRow.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +16,10 @@ class CartCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 110,
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.only(bottom: 20),
+      height: 100,
       width: double.maxFinite,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -25,23 +28,25 @@ class CartCard extends StatelessWidget {
           Container(
             height: 80,
             width: 80,
-            padding: const EdgeInsets.all(10),
-            margin: const EdgeInsets.only(right: 10),
-            decoration: const BoxDecoration(shape: BoxShape.circle),
-            child: Image.network(
-              itemImageuRL,
-              width: double.maxFinite,
-              height: 80,
-              fit: BoxFit.cover,
+            margin: EdgeInsets.only(right: 10),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.network(
+                itemImageuRL,
+                width: double.maxFinite,
+                height: 80,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
 
           Expanded(
-            flex: 1,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(
+                SizedBox(
+                  width: 100,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -50,13 +55,13 @@ class CartCard extends StatelessWidget {
                         "\$ $itemPrice",
                         style: AppStyles.mediumred,
                       ),
-
+                              
                       // product name
                       Text(
                         itemName,
                         style: AppStyles.medium,
                       ),
-
+                              
                       //  description
                       Text(
                         itemDescription,
@@ -68,56 +73,18 @@ class CartCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      const Icon(
-                        Icons.more_vert,
-                        size: 30,
-                        weight: 0.3,
-                      ),
-                      // adding item row
-                      Wrap(
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        spacing: 10,
-                        children: [
-                          SizedBox(
-                            height: 30,
-                            width: 30,
-                            child: FittedBox(
-                              child: FloatingActionButton(
-                                backgroundColor: Colors.grey.shade100,
-                                elevation: 0,
-                                onPressed: () => {},
-                                child: const Icon(Icons.remove),
-                              ),
-                            ),
-                          ),
-                          Text(
-                            "0",
-                            style: AppStyles.normal,
-                          ),
-                          SizedBox(
-                            height: 30,
-                            width: 30,
-                            child: FittedBox(
-                              child: FloatingActionButton(
-                                backgroundColor: const Color(0xff495057),
-                                elevation: 0,
-                                onPressed: () => {},
-                                child: const Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    const Icon(
+                      Icons.more_vert,
+                      size: 30,
+                      weight: 0.3,
+                    ),
+                    // adding item row
+                    CalculationRow()
+                  ],
                 )
               ],
             ),

@@ -1,6 +1,8 @@
 import 'package:ecommerce_app/components/reusableButton.dart';
 import 'package:ecommerce_app/pages/cart/component/cartCard.dart';
+import 'package:ecommerce_app/pages/singleProduct/ui/singleProductPage.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
+import 'package:ecommerce_app/utils/pageTransition.dart';
 import 'package:flutter/material.dart';
 
 class Cart extends StatefulWidget {
@@ -113,20 +115,20 @@ class _CartState extends State<Cart> {
           backgroundColor: Colors.white,
         ),
         backgroundColor: Colors.white,
-        body: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Expanded(
-              child: ListView.builder(
-                  itemCount: items.length,
-                  itemBuilder: (context, index) => Container(
-                        margin: EdgeInsets.only(bottom: 10),
-                        child: CartCard(
-                            itemImageuRL: items[index].itemImageURL,
-                            itemName: items[index].itemName,
-                            itemPrice: items[index].itemPrice,
-                            itemDescription: items[index].itemDescription),
-                      )),
-            )),
+        body:  ListView.builder(
+            itemCount: items.length,
+            itemBuilder: (context, index) => Container(
+                  margin: EdgeInsets.only(bottom: 10),
+                  child: GestureDetector(
+                    onTap: () => Navigator.push(context,
+                        CustomPageRoute(page: SingleProductPage())),
+                    child: CartCard(
+                        itemImageuRL: items[index].itemImageURL,
+                        itemName: items[index].itemName,
+                        itemPrice: items[index].itemPrice,
+                        itemDescription: items[index].itemDescription),
+                  ),
+                )),
         bottomNavigationBar: Container(
           height: 120,
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -169,13 +171,9 @@ class _CartState extends State<Cart> {
                   )
                 ],
               ),
-            
               ReusableButton(ButttonText: "Checkout", onClick: () {}),
-
               Row(
-                children: [
-
-                ],
+                children: [],
               )
             ],
           ),

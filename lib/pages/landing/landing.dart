@@ -1,9 +1,9 @@
-import 'package:ecommerce_app/pages/landing/ui/singleProductPage.dart';
-
+import 'package:ecommerce_app/pages/browseProducts/ui/browseProducts.dart';
+import 'package:ecommerce_app/pages/singleProduct/ui/singleProductPage.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:flutter/material.dart';
 
-import '../cart/ui/checkoutpage.dart';
+import '../cart/ui/cartPage.dart';
 import '../home/ui/homepage.dart';
 
 class Landing extends StatefulWidget {
@@ -22,7 +22,7 @@ class _LandingState extends State<Landing> {
     });
   }
 
-  List pages = [Home(), SingleProductPage()];
+  List pages = [Home(), BrowseProducts(), Cart()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +40,12 @@ class _LandingState extends State<Landing> {
                 Icons.home,
               ),
               label: "Home",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.search,
+              ),
+              label: "Browse",
             ),
             BottomNavigationBarItem(
                 icon: Icon(Icons.shopping_bag), label: "Cart"),

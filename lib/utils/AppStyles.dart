@@ -15,6 +15,12 @@ class AppStyles {
 
         static final TextStyle largeLight20 = GoogleFonts.poppins(
       fontSize: 20, fontWeight: FontWeight.w400, color: Colors.black);
+      
+        static final TextStyle largeSemiBold20 = GoogleFonts.poppins(
+      fontSize: 20, fontWeight: FontWeight.w500, color: Colors.grey.shade500);
+
+              static final TextStyle largeSemiBoldGrey20 = GoogleFonts.poppins(
+      fontSize: 20, fontWeight: FontWeight.w500, color: Colors.grey.shade500);
 
   static final TextStyle largeBold = GoogleFonts.poppins(
       fontSize: 22, fontWeight: FontWeight.w700, color: Colors.black);
