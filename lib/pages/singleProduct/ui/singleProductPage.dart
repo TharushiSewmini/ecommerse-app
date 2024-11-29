@@ -36,7 +36,7 @@ class SingleProductPage extends StatelessWidget {
               // image
               Stack(children: [
                 Container(
-                  height: 350,
+                  height: MediaQuery.of(context).size.height * 0.6,
                   width: double.maxFinite,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.transparent, width: 1),
@@ -91,7 +91,7 @@ class SingleProductPage extends StatelessWidget {
 
               // description
               Padding(
-                padding: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(top: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -104,6 +104,9 @@ class SingleProductPage extends StatelessWidget {
                     Text(
                       category,
                       style: AppStyles.largeSemiBold20,
+                    ),
+                    const SizedBox(
+                      height: 6,
                     ),
                     Text(
                       "Model: WH-1000XM4, Black",

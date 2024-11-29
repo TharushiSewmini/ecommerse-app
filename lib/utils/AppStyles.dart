@@ -12,14 +12,13 @@ class AppStyles {
   static final TextStyle largeLight = GoogleFonts.poppins(
       fontSize: 24, fontWeight: FontWeight.w400, color: Colors.black);
 
-
-        static final TextStyle largeLight20 = GoogleFonts.poppins(
+  static final TextStyle largeLight20 = GoogleFonts.poppins(
       fontSize: 20, fontWeight: FontWeight.w400, color: Colors.black);
-      
-        static final TextStyle largeSemiBold20 = GoogleFonts.poppins(
+
+  static final TextStyle largeSemiBold20 = GoogleFonts.poppins(
       fontSize: 20, fontWeight: FontWeight.w500, color: Colors.grey.shade500);
 
-              static final TextStyle largeSemiBoldGrey20 = GoogleFonts.poppins(
+  static final TextStyle largeSemiBoldGrey20 = GoogleFonts.poppins(
       fontSize: 20, fontWeight: FontWeight.w500, color: Colors.grey.shade500);
 
   static final TextStyle largeBold = GoogleFonts.poppins(
@@ -30,6 +29,9 @@ class AppStyles {
 
   static final TextStyle normalLight = GoogleFonts.poppins(
       fontSize: 16, fontWeight: FontWeight.w300, color: Colors.black);
+
+  static final TextStyle normalLightWhite = GoogleFonts.poppins(
+      fontSize: 16, fontWeight: FontWeight.w300, color: Colors.white);
 
   static final TextStyle normalLightwhite = GoogleFonts.poppins(
       fontSize: 16, fontWeight: FontWeight.w300, color: Colors.white);
@@ -58,5 +60,5 @@ class AppStyles {
   // Colors
   static const Color primaryColor = Colors.black;
   static const Color oppositeprimaryColor = Colors.white;
-  static const Color secondaryColor =  Color(0xff212429);
+  static const Color secondaryColor = Color(0xff212429);
 }

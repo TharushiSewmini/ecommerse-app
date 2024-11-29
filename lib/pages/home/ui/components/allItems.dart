@@ -3,7 +3,9 @@ import 'package:ecommerce_app/pages/home/ui/components/productCard.dart';
 import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
 import 'package:ecommerce_app/pages/home/bloc/home_bloc.dart';
 import 'package:ecommerce_app/model/product_model.dart';
+import 'package:ecommerce_app/pages/singleProduct/ui/singleProductPage.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
+import 'package:ecommerce_app/utils/pageTransition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -109,20 +111,41 @@ class _AllItemsState extends State<AllItems> {
                 itemBuilder: (context, index) {
                   List<Product> products = widget.products;
 
-                  return ProductCard(
-                    id: products[index].id,
-                    title: products[index].title,
-                    price: products[index].price,
-                    description: products[index].description,
-                    category: products[index].category,
-                    image: products[index].image,
-                    onAddCart: () {
-                      // BlocProvider.of<HomeBloc>(context)
-                      //     .add(AddToCartEvent(products[index]));
+                  return InkWell(
+                    onTap: () => Navigator.push(
+                        context,
+                        CustomPageRoute(
+                            page: SingleProductPage(
+                                category: products[index].category,
+                                description: products[index].description,
+                                image: products[index].image,
+                                price: products[index].price,
+                                title: products[index].title))),
+                    child: ProductCard(
+                      id: products[index].id,
+                      title: products[index].title,
+                      price: products[index].price,
+                      description: products[index].description,
+                      category: products[index].category,
+                      image: products[index].image,
+                      onAddCart: () {
+                        BlocProvider.of<CartBloc>(context)
+                            .add(AddOrUpdateCartEvent(products[index], 1));
 
-                      BlocProvider.of<CartBloc>(context)
-                          .add(AddOrUpdateCartEvent(products[index], 1));
-                    },
+                        // showing snacBar
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: AppStyles.secondaryColor,
+                            content: Text(
+                              "${products[index].title} added to cart",
+                              style: AppStyles.normalLightWhite,
+                            ),
+                            duration: Duration(seconds: 2),
+                          ),
+                        );
+                      },
+                    ),
                   );
                 }),
           ),
