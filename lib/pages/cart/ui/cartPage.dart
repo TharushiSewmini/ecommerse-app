@@ -41,7 +41,14 @@ class _CartState extends State<Cart> {
                   margin: EdgeInsets.only(bottom: 10),
                   child: GestureDetector(
                     onTap: () => Navigator.push(
-                        context, CustomPageRoute(page: SingleProductPage())),
+                        context,
+                        CustomPageRoute(
+                            page: SingleProductPage(
+                                category: cartItems[index].category,
+                                description: cartItems[index].description,
+                                image: cartItems[index].image,
+                                price: cartItems[index].price,
+                                title: cartItems[index].title))),
                     child: CartCard(
                       id: cartItems[index].id,
                       title: cartItems[index].title,

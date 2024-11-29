@@ -17,21 +17,21 @@ final List<BrowseProductProps> items = [
     itemImageURL:
         'https://images.pexels.com/photos/205926/pexels-photo-205926.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     itemName: 'Wireless Headphones',
-    itemPrice: "49.99",
+    itemPrice: 49.99,
     itemDescription: 'High-quality sound with noise cancellation.',
   ),
   BrowseProductProps(
     itemImageURL:
         'https://images.pexels.com/photos/812264/pexels-photo-812264.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     itemName: 'Smart Laptop',
-    itemPrice: " 15.99",
+    itemPrice: 15.99,
     itemDescription: 'Adjustable stand for all smartphones.',
   ),
   BrowseProductProps(
     itemImageURL:
         'https://images.pexels.com/photos/1298601/pexels-photo-1298601.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     itemName: 'Gaming Mouse',
-    itemPrice: "25.99",
+    itemPrice: 25.9,
     itemDescription: 'Ergonomic design with customizable buttons.',
   ),
 ];
@@ -80,9 +80,14 @@ class _BrowseProductsState extends State<BrowseProducts> {
                           margin: const EdgeInsets.only(bottom: 10),
                           child: InkWell(
                             onTap: () => Navigator.push(
-                              context,
-                             CustomPageRoute(page: SingleProductPage())
-                            ),
+                                context,
+                                CustomPageRoute(
+                                    page: SingleProductPage(
+                                category: items[index].itemName,
+                                description: items[index].itemDescription,
+                                image: items[index].itemImageURL,
+                                price: items[index].itemPrice,
+                                title: items[index].itemName))),
                             child: BrowseCard(
                                 itemImageuRL: items[index].itemImageURL,
                                 itemName: items[index].itemName,
@@ -102,7 +107,7 @@ class _BrowseProductsState extends State<BrowseProducts> {
 class BrowseProductProps {
   String itemImageURL;
   String itemName;
-  String itemPrice;
+  double itemPrice;
   String itemDescription;
 
   BrowseProductProps(

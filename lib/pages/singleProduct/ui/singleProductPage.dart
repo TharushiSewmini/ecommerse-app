@@ -2,7 +2,18 @@ import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:flutter/material.dart';
 
 class SingleProductPage extends StatelessWidget {
-  const SingleProductPage({super.key});
+  String title;
+  String image;
+  double price;
+  String category;
+  String description;
+  SingleProductPage(
+      {super.key,
+      required this.category,
+      required this.description,
+      required this.image,
+      required this.price,
+      required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +21,7 @@ class SingleProductPage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Head Phone',
+          title,
           style: AppStyles.largeLight20,
         ),
         leading: IconButton(
@@ -34,7 +45,7 @@ class SingleProductPage extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: Image.network(
-                      "https://images.pexels.com/photos/51383/photo-camera-subject-photographer-51383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                      image,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -86,12 +97,12 @@ class SingleProductPage extends StatelessWidget {
                   children: [
                     // Price
                     Text(
-                      "\$349.99",
+                      "\$ " + price.toString(),
                       style: AppStyles.largeBold,
                     ),
 
                     Text(
-                      "SONY Premium Wireless Headphones",
+                      category,
                       style: AppStyles.largeSemiBold20,
                     ),
                     Text(
@@ -102,7 +113,7 @@ class SingleProductPage extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      "The technology with two noise sensors and two microphones on each ear cup detects ambient noise and sends the data to the HD noise minimization processor QN1. Using a new algorithm, the QN1 then processes and minimizes noise for different acoustic environments in real time. Together with a new Bluetooth Audio SoC ",
+                      description,
                       style: AppStyles.smallGrey,
                     )
                     // Brand

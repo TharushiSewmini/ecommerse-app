@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class BrowseCard extends StatelessWidget {
   String itemImageuRL;
   String itemName;
-  String itemPrice;
+  double itemPrice;
   String itemDescription;
   BrowseCard(
       {super.key,
