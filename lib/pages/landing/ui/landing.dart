@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/pages/browseProducts/ui/browseProducts.dart';
+import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
 import 'package:ecommerce_app/pages/home/bloc/home_bloc.dart';
-import 'package:ecommerce_app/pages/singleProduct/ui/singleProductPage.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,10 +28,10 @@ class _LandingState extends State<Landing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BlocBuilder<HomeBloc, HomeState>(
+      bottomNavigationBar: BlocBuilder<CartBloc, CartState>(
         builder: (context, state) {
           int cartItemCount = 0;
-          if (state is HomeCartUpdateState && state.cartItems.isNotEmpty) {
+          if (state is CartUpdatedState && state.cartItems.isNotEmpty) {
             cartItemCount = state.cartItems.length;
           }
           return BottomNavigationBar(

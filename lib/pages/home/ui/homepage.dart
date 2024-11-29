@@ -1,6 +1,6 @@
-import 'package:ecommerce_app/components/homeBody.dart';
+import 'package:ecommerce_app/pages/home/ui/components/allItems.dart';
 import 'package:ecommerce_app/pages/home/bloc/home_bloc.dart';
-import 'package:ecommerce_app/pages/home/model/product_model.dart';
+import 'package:ecommerce_app/model/product_model.dart';
 import 'package:ecommerce_app/pages/home/ui/components/categoryRow.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,29 +16,34 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int selectedItem = 0;
 
-  // getting seleceted value from category row
   void handleSelectingIndex(int index) {
     setState(() {
       selectedItem = index;
     });
+
+    String category = "";
+    switch (index) {
+      case 1:
+        category = "electronics";
+        break;
+      case 2:
+        category = "jewelery";
+        break;
+      case 3:
+        category = "electronics";
+        break;
+      default:
+        category = "";
+    }
+
+    homeBloc.add(HomeInitialEvent(category));
   }
 
   // returning widget based on selected index
   Widget returningWidget(List<Product> products) {
-    switch (selectedItem) {
-      case 0:
-        return HomeBody(
-          products: products,
-        );
-      case 1:
-        return Text("Category 2");
-      case 2:
-        return Text("Category 3");
-      case 3:
-        return Text("Category 4");
-      default:
-        return Text("Null widget");
-    }
+    return AllItems(
+      products: products,
+    );
   }
 
   final HomeBloc homeBloc = HomeBloc();
@@ -46,74 +51,63 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    homeBloc.add(HomeInitialEvent());
+    homeBloc.add(HomeInitialEvent(""));
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeBloc, HomeState>(
-      bloc: homeBloc,
-      listenWhen: (previous, current) => current is HomeActionState,
-      buildWhen: (previous, current) => current is! HomeActionState,
-      listener: (context, state) {
-        if (state is AddToCartActionState) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text("Item added to cart"),
-            duration: Duration(seconds: 2),
-          ));
-        }
-      },
-      builder: (context, state) {
-        switch (state.runtimeType) {
-          case HomeLoadingState:
-            return Center(child: CircularProgressIndicator());
-          case HomeLoadingSuccessRate:
-            final sucessRate = state as HomeLoadingSuccessRate;
-            return SafeArea(
-              child: Scaffold(
-                // Background Color
-                backgroundColor: Colors.white,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Container(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // User Name
+              Text(
+                "Hello Michael",
+                style: AppStyles.headline,
+              ),
 
-                // Body
-                body: Container(
-                  padding: EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // User Name
-                      Text(
-                        "Hello Michael",
-                        style: AppStyles.headline,
-                      ),
+              // Categories List
+              CategoryRow(
+                onSelected: (value) => handleSelectingIndex(value),
+              ),
 
-                      //  Categories List
-                      CategoryRow(
-                        onSelected: (value) => handleSelectingIndex(value),
-                      ),
-                      // Advertistment
+              // Advertisement Section (if any)
 
-                      // body part
-                      Expanded(
-                          flex: 1,
-                          child: Container(
-                              child: returningWidget(sucessRate.products))),
-
-                      // Products
-
-                      // App Bar
-                    ],
-                  ),
+              // Products Section
+              Expanded(
+                flex: 1,
+                child: BlocConsumer<HomeBloc, HomeState>(
+                  bloc: homeBloc,
+                  listenWhen: (previous, current) => current is HomeActionState,
+                  buildWhen: (previous, current) => current is! HomeActionState,
+                  listener: (context, state) {
+                    // Optional: Handle side effects here
+                  },
+                  builder: (context, state) {
+                    switch (state.runtimeType) {
+                      case HomeLoadingState:
+                        return Center(child: CircularProgressIndicator());
+                      case HomeLoadingSuccessRate:
+                        final successState = state as HomeLoadingSuccessRate;
+                        return AllItems(products: successState.products);
+                      default:
+                        if (state is HomeErrorState) {
+                          return Center(child: Text("Error: ${state.message}"));
+                        }
+                        return Center(
+                            child: Text("Unexpected error occurred."));
+                    }
+                  },
                 ),
               ),
-            );
-
-          default:
-            if (state is HomeErrorState) {
-              return Center(child: Text("Error: ${state.message}"));
-            }
-            return Center(child: Text("Unexpected error occurred."));
-        }
-      },
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

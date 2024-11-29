@@ -19,9 +19,4 @@ class HomeErrorState extends HomeState {
   HomeErrorState(this.message);
 }
 
-class AddToCartActionState extends HomeActionState {}
 
-class HomeCartUpdateState extends HomeState {
-  final List<Product> cartItems;
-  HomeCartUpdateState(this.cartItems);
-}

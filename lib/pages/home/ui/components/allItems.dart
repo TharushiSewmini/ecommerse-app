@@ -1,18 +1,19 @@
-import 'package:ecommerce_app/components/dealsCard.dart';
-import 'package:ecommerce_app/components/productCard.dart';
+import 'package:ecommerce_app/pages/home/ui/components/dealsCard.dart';
+import 'package:ecommerce_app/pages/home/ui/components/productCard.dart';
+import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
 import 'package:ecommerce_app/pages/home/bloc/home_bloc.dart';
-import 'package:ecommerce_app/pages/home/model/product_model.dart';
+import 'package:ecommerce_app/model/product_model.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class HomeBody extends StatefulWidget {
+class AllItems extends StatefulWidget {
   final List<Product> products;
-  HomeBody({super.key, required this.products});
+  AllItems({super.key, required this.products});
 
   @override
-  State<HomeBody> createState() => _HomeBodyState();
+  State<AllItems> createState() => _AllItemsState();
 }
 
 List<DealsBanner> dealsBanners = [
@@ -48,7 +49,7 @@ final pages = List.generate(
 // page controller
 final controller = PageController(viewportFraction: 1, keepPage: true);
 
-class _HomeBodyState extends State<HomeBody> {
+class _AllItemsState extends State<AllItems> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -116,8 +117,11 @@ class _HomeBodyState extends State<HomeBody> {
                     category: products[index].category,
                     image: products[index].image,
                     onAddCart: () {
-                      BlocProvider.of<HomeBloc>(context)
-                          .add(AddToCartEvent(products[index]));
+                      // BlocProvider.of<HomeBloc>(context)
+                      //     .add(AddToCartEvent(products[index]));
+
+                      BlocProvider.of<CartBloc>(context)
+                          .add(AddOrUpdateCartEvent(products[index], 1));
                     },
                   );
                 }),

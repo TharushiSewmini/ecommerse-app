@@ -1,8 +1,12 @@
+import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CalculationRow extends StatefulWidget {
-  const CalculationRow({super.key});
+  int productId;
+  String quantity;
+  CalculationRow({super.key, required this.quantity , required this.productId});
 
   @override
   State<CalculationRow> createState() => _CalculationRowState();
@@ -15,18 +19,14 @@ class _CalculationRowState extends State<CalculationRow> {
   Widget build(BuildContext context) {
     // increasing price
     void increasingPrice() {
-      setState(() {
-        totalItem += 1;
-      });
+      BlocProvider.of<CartBloc>(context)
+          .add(IncreaseQuantityButtonClickedEvent(widget.productId));
     }
 
     // decreasing price
     void decreasingPrice() {
-      if (totalItem > 0) {
-        setState(() {
-          totalItem -= 1;
-        });
-      }
+      BlocProvider.of<CartBloc>(context)
+          .add(DecreaseQuantityButtonClickedEvent(widget.productId));
     }
 
     return Wrap(
@@ -47,7 +47,7 @@ class _CalculationRowState extends State<CalculationRow> {
           ),
         ),
         Text(
-          totalItem.toString(),
+          widget.quantity,
           style: AppStyles.normal,
         ),
         SizedBox(
@@ -55,7 +55,7 @@ class _CalculationRowState extends State<CalculationRow> {
           width: 30,
           child: FittedBox(
             child: FloatingActionButton(
-               heroTag: null,
+              heroTag: null,
               backgroundColor: const Color(0xff495057),
               elevation: 0,
               onPressed: () => increasingPrice(),

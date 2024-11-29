@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:ecommerce_app/pages/home/model/product_model.dart';
+import 'package:ecommerce_app/model/product_model.dart';
 import 'package:http/http.dart' as http;
 
 class ProductService {
@@ -10,10 +10,20 @@ class ProductService {
 
     if (response.statusCode == 200) {
       final List<dynamic> data = jsonDecode(response.body);
-      print("data"+ data.toString());
       return data.map((json) => Product.fromJson(json)).toList();
     } else {
       throw Exception("Failed to load products");
+    }
+  }
+
+  Future<List<Product>> fetchSepearetCategoriesProducts(String category) async {
+    String url = baseUrl + (category.isNotEmpty ? "/category/$category" : "");
+    final resonse = await http.get(Uri.parse(url));
+    if (resonse.statusCode == 200) {
+      final List<dynamic> data = jsonDecode(resonse.body);
+      return data.map((Json) => Product.fromJson(Json)).toList();
+    } else {
+      throw Exception("Failed to fetch data");
     }
   }
 }

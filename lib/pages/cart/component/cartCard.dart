@@ -1,6 +1,8 @@
+import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
 import 'package:ecommerce_app/pages/cart/component/calculationRow.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartCard extends StatelessWidget {
   final int id;
@@ -9,6 +11,7 @@ class CartCard extends StatelessWidget {
   final String description;
   final String category;
   final String image;
+  final String quantity;
   CartCard(
       {super.key,
       required this.id,
@@ -16,10 +19,16 @@ class CartCard extends StatelessWidget {
       required this.price,
       required this.description,
       required this.category,
-      required this.image});
+      required this.image,
+      required this.quantity});
 
   @override
   Widget build(BuildContext context) {
+    // cart item removing
+    void handleCartItemRemove() {
+      BlocProvider.of<CartBloc>(context).add(RemoveCartEvent(id));
+    }
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16),
       margin: EdgeInsets.only(bottom: 20),
@@ -55,7 +64,7 @@ class CartCard extends StatelessWidget {
                     children: [
                       // price
                       Text(
-                        "\$ $price",
+                        "\$ $price x $quantity",
                         style: AppStyles.mediumred,
                       ),
 
@@ -83,13 +92,20 @@ class CartCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    const Icon(
-                      Icons.more_vert,
-                      size: 30,
-                      weight: 0.3,
+                    InkWell(
+                      onTap: () => handleCartItemRemove(),
+                      child: const Icon(
+                        Icons.delete_outline_sharp,
+                        size: 30,
+                        weight: 0.1,
+                        color: Colors.grey,
+                      ),
                     ),
                     // adding item row
-                    CalculationRow()
+                    CalculationRow(
+                      productId: id,
+                      quantity: quantity,
+                    )
                   ],
                 )
               ],

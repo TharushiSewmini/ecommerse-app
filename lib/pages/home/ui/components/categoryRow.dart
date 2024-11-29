@@ -17,9 +17,9 @@ class _CategoryRowState extends State<CategoryRow> {
 // category List
   List<CategoryProps> categories = [
     CategoryProps(categoryName: "All", index: 0),
-    CategoryProps(categoryName: "Audio", index: 1),
-    CategoryProps(categoryName: "Drones+Electronics", index: 2),
-    CategoryProps(categoryName: "Photo + Video", index: 3)
+    CategoryProps(categoryName: "Electronics", index: 1),
+    CategoryProps(categoryName: " Jewelery", index: 2),
+    CategoryProps(categoryName: "Women's clothing", index: 3)
   ];
 
   void handlestateChange(int number) {
