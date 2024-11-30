@@ -65,4 +65,6 @@ class AppStyles {
   static const Color oppositeprimaryColor = Colors.white;
   static const Color secondaryColor = Color(0xff212429);
   static const Color thirdColor = Color.fromARGB(255, 228, 228, 228);
+  static const Color successColor = Color(0xFF17AC1C);
+  static const Color errorColor = Color(0xFFED291B);
 }

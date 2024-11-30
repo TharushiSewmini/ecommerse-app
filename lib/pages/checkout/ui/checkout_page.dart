@@ -2,7 +2,10 @@ import 'package:ecommerce_app/components/reusableButton.dart';
 import 'package:ecommerce_app/components/reusable_textfield.dart';
 import 'package:ecommerce_app/pages/checkout/components/checkout_card.dart';
 import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
+import 'package:ecommerce_app/pages/home/ui/home_page.dart';
+import 'package:ecommerce_app/pages/landing/ui/landing_page.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
+import 'package:ecommerce_app/utils/pageTransition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,6 +23,42 @@ class _CheckOutState extends State<CheckOut> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController zipcodeController = TextEditingController();
+
+  // place an order functionality
+  void placeAnOrder() {
+    if (nameController.text.trim().isNotEmpty &&
+      emailController.text.trim().isNotEmpty &&
+      phoneController.text.trim().isNotEmpty &&
+      addressController.text.trim().isNotEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: AppStyles.successColor,
+          content: Text(
+            "Order Placed",
+            style: AppStyles.extrasmallwhite,
+            textAlign: TextAlign.center,
+          ),
+          duration: Duration(seconds: 2),
+          dismissDirection: DismissDirection.down,
+        ),
+      );
+      // navigatate to home
+      Navigator.push(context, CustomPageRoute(page: Landing()));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: AppStyles.errorColor,
+          content: Text(
+            "Fill the fields",
+            style: AppStyles.extrasmallwhite,
+            textAlign: TextAlign.center,
+          ),
+          duration: Duration(seconds: 2),
+          dismissDirection: DismissDirection.down,
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +167,7 @@ class _CheckOutState extends State<CheckOut> {
                 ),
                 ReusableButton(
                   ButttonText: "Place an Order",
-                  onClick: () {},
+                  onClick: () => placeAnOrder(),
                   isDisable: state.cartItems.isEmpty ? true : false,
                 ),
 
