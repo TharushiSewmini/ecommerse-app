@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:ecommerce_app/components/reusableButton.dart';
 import 'package:ecommerce_app/components/reusable_textfield.dart';
-import 'package:ecommerce_app/pages/home/ui/home_page.dart';
 import 'package:ecommerce_app/pages/landing/ui/landing_page.dart';
 import 'package:ecommerce_app/pages/login/bloc/auth_bloc.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
