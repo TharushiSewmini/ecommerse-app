@@ -36,8 +36,7 @@ class AppStyles {
   static final TextStyle normalLight = GoogleFonts.poppins(
       fontSize: 16, fontWeight: FontWeight.w300, color: Colors.black);
 
-  static final TextStyle normalLightWhite = GoogleFonts.poppins(
-      fontSize: 16, fontWeight: FontWeight.w300, color: Colors.white);
+
 
   static final TextStyle normalLightwhite = GoogleFonts.poppins(
       fontSize: 16, fontWeight: FontWeight.w300, color: Colors.white);
@@ -59,6 +58,9 @@ class AppStyles {
 
   static final TextStyle smallGrey = GoogleFonts.poppins(
       fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey.shade500);
+
+        static final TextStyle smallWhite = GoogleFonts.poppins(
+      fontSize: 14, fontWeight: FontWeight.w400, color: Colors.white);
 
   static final TextStyle extrasmallgrey = GoogleFonts.poppins(
       fontSize: 12, fontWeight: FontWeight.w300, color: Colors.grey.shade600);

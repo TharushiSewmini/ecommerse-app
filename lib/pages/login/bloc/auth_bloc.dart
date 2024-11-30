@@ -20,10 +20,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(AuthLoading());
     try {
 // delaying some times to simulate process
-      await Future.delayed(Duration(seconds: 3));
-      user = User(userName: event.email, password: event.password);
-      emit(LoginSuccessState(user: user));
-   
+
+      if (event.email.isNotEmpty || event.password.isNotEmpty) {
+        user = User(userName: event.email, password: event.password);
+        await Future.delayed(Duration(seconds: 3));
+        emit(LoginSuccessState(user: user));
+      } else {
+        emit(LoginErrorState(
+            errorMessage: "Give a random useuname and password"));
+      }
     } catch (e) {
       emit(LoginErrorState(errorMessage: "Failed To Login"));
     }

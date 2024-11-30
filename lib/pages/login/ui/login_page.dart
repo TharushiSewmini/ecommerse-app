@@ -31,15 +31,17 @@ class Login extends StatelessWidget {
                     content: Text(
                       "Logging in ...",
                       style: AppStyles.small,
+                      textAlign: TextAlign.center,
                     )),
               );
             } else if (state is LoginSuccessState) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                    backgroundColor: Colors.white,
+                    backgroundColor: AppStyles.successColor,
                     content: Text(
                       "Login Successful!",
                       style: AppStyles.small,
+                      textAlign: TextAlign.center,
                     )),
               );
 
@@ -48,7 +50,14 @@ class Login extends StatelessWidget {
             } else if (state is LoginErrorState) {
               // Show error
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(state.errorMessage)),
+                SnackBar(
+                  content: Text(
+                    state.errorMessage,
+                    style: AppStyles.smallWhite,
+                    textAlign: TextAlign.center,
+                  ),
+                  backgroundColor: AppStyles.errorColor,
+                ),
               );
             }
           },
