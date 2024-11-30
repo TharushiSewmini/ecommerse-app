@@ -20,7 +20,7 @@ class CheckOutCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 10),
+      margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
           border: Border(
               bottom: BorderSide(color: Colors.grey.shade300, width: 1))),
@@ -70,7 +70,7 @@ class CheckOutCard extends StatelessWidget {
                 BlocProvider.of<CartBloc>(context)
                     .add(RemoveCartEvent(productId));
               },
-              icon: Icon(Icons.delete_outline_outlined))
+              icon: const Icon(Icons.delete_outline_outlined))
 
           // Row
         ],

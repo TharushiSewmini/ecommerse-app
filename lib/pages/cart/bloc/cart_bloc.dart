@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ffi';
 
 import 'package:bloc/bloc.dart';
 import 'package:ecommerce_app/model/product_model.dart';

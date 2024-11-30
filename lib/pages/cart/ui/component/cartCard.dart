@@ -12,7 +12,7 @@ class CartCard extends StatelessWidget {
   final String category;
   final String image;
   final String quantity;
-  CartCard(
+  const CartCard(
       {super.key,
       required this.id,
       required this.title,
@@ -30,8 +30,8 @@ class CartCard extends StatelessWidget {
     }
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16),
-      margin: EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      margin: const EdgeInsets.only(bottom: 20),
       height: 100,
       width: double.maxFinite,
       child: Row(
@@ -41,7 +41,7 @@ class CartCard extends StatelessWidget {
           Container(
             height: 80,
             width: 80,
-            margin: EdgeInsets.only(right: 10),
+            margin: const EdgeInsets.only(right: 10),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image.network(

@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/pages/home/ui/components/dealsCard.dart';
 import 'package:ecommerce_app/pages/home/ui/components/productCard.dart';
 import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
-import 'package:ecommerce_app/pages/home/bloc/home_bloc.dart';
 import 'package:ecommerce_app/model/product_model.dart';
 import 'package:ecommerce_app/pages/singleProduct/ui/singleProduct_page.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
@@ -12,7 +11,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class AllItems extends StatefulWidget {
   final List<Product> products;
-  AllItems({super.key, required this.products});
+  const AllItems({super.key, required this.products});
 
   @override
   State<AllItems> createState() => _AllItemsState();
@@ -59,7 +58,7 @@ class _AllItemsState extends State<AllItems> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        padding: EdgeInsets.only(top: 20),
+        padding: const EdgeInsets.only(top: 20),
         width: double.maxFinite,
         color: Colors.white,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -77,7 +76,7 @@ class _AllItemsState extends State<AllItems> {
           ),
 
           //Deals Banners
-          Container(
+          SizedBox(
             width: double.infinity,
             height: 250,
             child: PageView.builder(
@@ -147,7 +146,7 @@ class _AllItemsState extends State<AllItems> {
                               style: AppStyles.extrasmallwhite,
                               textAlign: TextAlign.center,
                             ),
-                            duration: Duration(seconds: 1),
+                            duration: const Duration(seconds: 1),
                           ),
                         );
                       },

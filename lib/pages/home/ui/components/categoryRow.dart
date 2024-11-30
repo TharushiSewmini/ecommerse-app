@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CategoryRow extends StatefulWidget {
   final Function(int) onSelected;
-  CategoryRow({super.key, required this.onSelected});
+  const CategoryRow({super.key, required this.onSelected});
 
   @override
   State<CategoryRow> createState() => _CategoryRowState();
@@ -32,7 +32,7 @@ class _CategoryRowState extends State<CategoryRow> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 16),
+      margin: const EdgeInsets.only(top: 16),
       height: 34,
       width: double.maxFinite,
       child: ListView.builder(
@@ -41,9 +41,9 @@ class _CategoryRowState extends State<CategoryRow> {
           itemBuilder: (context, index) => InkWell(
                 onTap: () => handlestateChange(categories[index].index),
                 child: Container(
-                  margin: EdgeInsets.only(right: 32),
+                  margin: const EdgeInsets.only(right: 32),
                   child: Container(
-                    padding: EdgeInsets.only(bottom: 1),
+                    padding: const EdgeInsets.only(bottom: 1),
                     decoration: BoxDecoration(
                         border: Border(
                             bottom: BorderSide(
@@ -58,7 +58,7 @@ class _CategoryRowState extends State<CategoryRow> {
                         fontSize: 16,
                         color: selectedIndex == categories[index].index
                             ? Colors.black
-                            : Color(0xff868D94),
+                            : const Color(0xff868D94),
                       ),
                     ),
                   ),

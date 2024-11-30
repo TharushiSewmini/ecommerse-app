@@ -1,6 +1,5 @@
 import 'package:ecommerce_app/pages/browseProducts/ui/browseProducts.dart';
 import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
-import 'package:ecommerce_app/pages/home/bloc/home_bloc.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,7 +23,7 @@ class _LandingState extends State<Landing> {
     });
   }
 
-  List pages = [Home(), BrowseProducts(), Cart()];
+  List pages = [const Home(), const BrowseProducts(), const Cart()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,13 +42,13 @@ class _LandingState extends State<Landing> {
             unselectedLabelStyle: AppStyles.smallGrey,
             selectedItemColor: Colors.black,
             items: [
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                 icon: Icon(
                   Icons.home,
                 ),
                 label: "Home",
               ),
-              BottomNavigationBarItem(
+              const BottomNavigationBarItem(
                 icon: Icon(
                   Icons.search,
                 ),
@@ -58,7 +57,7 @@ class _LandingState extends State<Landing> {
               BottomNavigationBarItem(
                 icon: Stack(
                   children: [
-                    Icon(Icons.shopping_bag), // Main icon
+                    const Icon(Icons.shopping_bag), // Main icon
                     Positioned(
                       top: 0, // Adjust the top position
                       right: 0, // Adjust the right position
@@ -67,7 +66,7 @@ class _LandingState extends State<Landing> {
                         backgroundColor: Colors.black, // Badge background color
                         child: Text(
                           cartItemCount.toString(), // Badge count
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize:
                                 10, // Ensure the text fits within the badge

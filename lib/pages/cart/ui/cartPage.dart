@@ -2,7 +2,6 @@ import 'package:ecommerce_app/components/reusableButton.dart';
 import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
 import 'package:ecommerce_app/pages/cart/ui/component/cartCard.dart';
 import 'package:ecommerce_app/pages/checkout/ui/checkout_page.dart';
-import 'package:ecommerce_app/pages/home/bloc/home_bloc.dart';
 import 'package:ecommerce_app/pages/singleProduct/ui/singleProduct_page.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:ecommerce_app/utils/pageTransition.dart';
@@ -39,7 +38,7 @@ class _CartState extends State<Cart> {
               itemBuilder: (context, index) {
                 final cartItems = state.cartItems;
                 return Container(
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: const EdgeInsets.only(bottom: 10),
                   child: GestureDetector(
                     onTap: () => Navigator.push(
                         context,
@@ -74,7 +73,7 @@ class _CartState extends State<Cart> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 4,
                     ),
                     Row(
@@ -85,21 +84,21 @@ class _CartState extends State<Cart> {
                           style: AppStyles.medium,
                         ),
                         Text(
-                          "\$ " + state.total.toString(),
+                          "\$ ${state.total}",
                           style: AppStyles.medium,
                         ),
                       ],
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 4,
                 ),
                 ReusableButton(
                     ButttonText: "Checkout",
                     onClick: () => Navigator.push(
-                        context, CustomPageRoute(page: CheckOut()))),
-                Row(
+                        context, CustomPageRoute(page: const CheckOut()))),
+                const Row(
                   children: [],
                 )
               ],

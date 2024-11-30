@@ -1,6 +1,5 @@
 import 'package:ecommerce_app/pages/home/ui/components/allItems.dart';
 import 'package:ecommerce_app/pages/home/bloc/home_bloc.dart';
-import 'package:ecommerce_app/model/product_model.dart';
 import 'package:ecommerce_app/pages/home/ui/components/categoryRow.dart';
 import 'package:ecommerce_app/pages/login/bloc/auth_bloc.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
@@ -63,7 +62,7 @@ class _HomeState extends State<Home> {
             }
 
             return Container(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -90,7 +89,7 @@ class _HomeState extends State<Home> {
                       builder: (context, state) {
                         switch (state.runtimeType) {
                           case HomeLoadingState:
-                            return Center(child: CircularProgressIndicator());
+                            return const Center(child: CircularProgressIndicator());
                           case HomeLoadingSuccessRate:
                             final successState =
                                 state as HomeLoadingSuccessRate;
@@ -100,7 +99,7 @@ class _HomeState extends State<Home> {
                               return Center(
                                   child: Text("Error: ${state.message}"));
                             }
-                            return Center(
+                            return const Center(
                                 child: Text("Unexpected error occurred."));
                         }
                       },

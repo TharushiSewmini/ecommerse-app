@@ -1,4 +1,3 @@
-import 'package:ecommerce_app/pages/home/ui/components/allItems.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:flutter/material.dart';
 
@@ -39,6 +38,5 @@ class ReusableTextField extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   borderSide: const BorderSide(color: Colors.transparent)))),
     );
-    ;
   }
 }

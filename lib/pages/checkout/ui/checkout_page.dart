@@ -2,7 +2,6 @@ import 'package:ecommerce_app/components/reusableButton.dart';
 import 'package:ecommerce_app/components/reusable_textfield.dart';
 import 'package:ecommerce_app/pages/checkout/ui/components/checkout_card.dart';
 import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
-import 'package:ecommerce_app/pages/home/ui/home_page.dart';
 import 'package:ecommerce_app/pages/landing/ui/landing_page.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:ecommerce_app/utils/pageTransition.dart';
@@ -39,12 +38,12 @@ class _CheckOutState extends State<CheckOut> {
             style: AppStyles.extrasmallwhite,
             textAlign: TextAlign.center,
           ),
-          duration: Duration(seconds: 2),
+          duration: const Duration(seconds: 2),
           dismissDirection: DismissDirection.down,
         ),
       );
       // navigatate to home
-      Navigator.push(context, CustomPageRoute(page: Landing()));
+      Navigator.push(context, CustomPageRoute(page: const Landing()));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -54,7 +53,7 @@ class _CheckOutState extends State<CheckOut> {
             style: AppStyles.extrasmallwhite,
             textAlign: TextAlign.center,
           ),
-          duration: Duration(seconds: 2),
+          duration: const Duration(seconds: 2),
           dismissDirection: DismissDirection.down,
         ),
       );
@@ -158,12 +157,12 @@ class _CheckOutState extends State<CheckOut> {
                       style: AppStyles.medium,
                     ),
                     Text(
-                      "\$ " + state.total.toString(),
+                      "\$ ${state.total}",
                       style: AppStyles.medium,
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 ReusableButton(
@@ -172,7 +171,7 @@ class _CheckOutState extends State<CheckOut> {
                   isDisable: state.cartItems.isEmpty ? true : false,
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
               ],

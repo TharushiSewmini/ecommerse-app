@@ -45,7 +45,7 @@ class Login extends StatelessWidget {
               );
 
               // Navigate to Home Page
-              Navigator.push(context, CustomPageRoute(page: Landing()));
+              Navigator.push(context, CustomPageRoute(page: const Landing()));
             } else if (state is LoginErrorState) {
               // Show error
               ScaffoldMessenger.of(context).showSnackBar(

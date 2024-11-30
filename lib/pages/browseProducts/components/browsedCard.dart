@@ -16,7 +16,7 @@ class BrowseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 10),
+      margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
           border: Border(
               bottom: BorderSide(color: Colors.grey.shade300, width: 1))),

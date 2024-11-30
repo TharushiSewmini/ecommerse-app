@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:ecommerce_app/model/user_model.dart';
-import 'package:ecommerce_app/utils/pageTransition.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
@@ -23,7 +22,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       if (event.email.isNotEmpty || event.password.isNotEmpty) {
         user = User(userName: event.email, password: event.password);
-        await Future.delayed(Duration(seconds: 3));
+        await Future.delayed(const Duration(seconds: 3));
         emit(LoginSuccessState(user: user));
       } else {
         emit(LoginErrorState(

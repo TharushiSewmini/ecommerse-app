@@ -82,7 +82,7 @@ class SingleProductPage extends StatelessWidget {
                                         style: AppStyles.extrasmallwhite,
                                         textAlign: TextAlign.center,
                                       ),
-                                      duration: Duration(seconds: 1),
+                                      duration: const Duration(seconds: 1),
                                     ),
                                   )
                                 },
@@ -105,7 +105,7 @@ class SingleProductPage extends StatelessWidget {
                   children: [
                     // Price
                     Text(
-                      "\$ " + price.toString(),
+                      "\$ $price",
                       style: AppStyles.largeBold,
                     ),
 
@@ -120,7 +120,7 @@ class SingleProductPage extends StatelessWidget {
                       "Model: WH-1000XM4, Black",
                       style: AppStyles.smallGrey,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Text(

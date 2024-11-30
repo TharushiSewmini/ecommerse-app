@@ -1,6 +1,5 @@
 import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
 import 'package:ecommerce_app/pages/home/bloc/home_bloc.dart';
-import 'package:ecommerce_app/pages/landing/ui/landing_page.dart';
 import 'package:ecommerce_app/pages/login/bloc/auth_bloc.dart';
 import 'package:ecommerce_app/pages/login/ui/login_page.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +37,7 @@ class MyApp extends StatelessWidget {
             brightness: Brightness.light),
         useMaterial3: true,
       ),
-      home: Login(),
+      home: const Login(),
     );
   }
 }

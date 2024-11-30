@@ -28,7 +28,7 @@ class ProductCard extends StatelessWidget {
           Container(
               height: 170,
               width: double.maxFinite,
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey.shade400, width: 1),
                 borderRadius: BorderRadius.circular(20),
@@ -47,7 +47,7 @@ class ProductCard extends StatelessWidget {
                   color: Colors.grey.shade300, shape: BoxShape.circle),
               child: IconButton(
                   onPressed: () => onAddCart(),
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.shopping_cart_rounded,
                     color: Colors.black,
                     size: 16,

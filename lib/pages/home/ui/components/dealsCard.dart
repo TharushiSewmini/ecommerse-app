@@ -18,7 +18,7 @@ class DealsCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Column(
         
@@ -31,7 +31,7 @@ class DealsCart extends StatelessWidget {
               BoxDecoration(color: Colors.grey.shade300, shape: BoxShape.circle),
           child: IconButton(
               onPressed: () => {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.favorite,
                 color: Colors.black,
               )),
@@ -45,7 +45,7 @@ class DealsCart extends StatelessWidget {
               child: Container(
                 width: double.maxFinite,
                 height: 200,
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Image.network(
                   dealImageUrl,
                 
