@@ -3,7 +3,7 @@ import 'package:ecommerce_app/pages/home/ui/components/productCard.dart';
 import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
 import 'package:ecommerce_app/pages/home/bloc/home_bloc.dart';
 import 'package:ecommerce_app/model/product_model.dart';
-import 'package:ecommerce_app/pages/singleProduct/ui/singleProductPage.dart';
+import 'package:ecommerce_app/pages/singleProduct/ui/singleProduct_page.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:ecommerce_app/utils/pageTransition.dart';
 import 'package:flutter/material.dart';
@@ -116,11 +116,13 @@ class _AllItemsState extends State<AllItems> {
                         context,
                         CustomPageRoute(
                             page: SingleProductPage(
-                                category: products[index].category,
-                                description: products[index].description,
-                                image: products[index].image,
-                                price: products[index].price,
-                                title: products[index].title))),
+                          category: products[index].category,
+                          description: products[index].description,
+                          image: products[index].image,
+                          price: products[index].price,
+                          title: products[index].title,
+                          product: products[index],
+                        ))),
                     child: ProductCard(
                       id: products[index].id,
                       title: products[index].title,
@@ -139,9 +141,10 @@ class _AllItemsState extends State<AllItems> {
                             backgroundColor: AppStyles.secondaryColor,
                             content: Text(
                               "${products[index].title} added to cart",
-                              style: AppStyles.normalLightWhite,
+                              style: AppStyles.extrasmallwhite,
+                              textAlign: TextAlign.center,
                             ),
-                            duration: Duration(seconds: 2),
+                            duration: Duration(seconds: 1),
                           ),
                         );
                       },

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../cart/ui/cartPage.dart';
-import '../../home/ui/homepage.dart';
+import '../../home/ui/home_page.dart';
 
 class Landing extends StatefulWidget {
   const Landing({super.key});

@@ -1,7 +1,11 @@
+import 'package:ecommerce_app/model/product_model.dart';
+import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SingleProductPage extends StatelessWidget {
+  Product? product;
   String title;
   String image;
   double price;
@@ -9,6 +13,7 @@ class SingleProductPage extends StatelessWidget {
   String description;
   SingleProductPage(
       {super.key,
+      this.product,
       required this.category,
       required this.description,
       required this.image,
@@ -22,7 +27,7 @@ class SingleProductPage extends StatelessWidget {
         centerTitle: true,
         title: Text(
           title,
-          style: AppStyles.largeLight20,
+          style: AppStyles.normalLight,
         ),
         leading: IconButton(
             onPressed: () => Navigator.pop(context),
@@ -55,19 +60,6 @@ class SingleProductPage extends StatelessWidget {
                   right: 10,
                   child: Column(
                     children: [
-                      Container(
-                        height: 36,
-                        width: 36,
-                        decoration: const BoxDecoration(
-                            color: Colors.white, shape: BoxShape.circle),
-                        child: IconButton(
-                            onPressed: () => {},
-                            icon: const Icon(
-                              Icons.favorite,
-                              size: 18,
-                              color: Colors.black,
-                            )),
-                      ),
                       const SizedBox(
                         height: 6,
                       ),
@@ -77,7 +69,23 @@ class SingleProductPage extends StatelessWidget {
                         decoration: const BoxDecoration(
                             color: Colors.white, shape: BoxShape.circle),
                         child: IconButton(
-                            onPressed: () => {},
+                            onPressed: () => {
+                                  BlocProvider.of<CartBloc>(context)
+                                      .add(AddOrUpdateCartEvent(product!, 1)),
+                                  // showing snacBar
+
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      backgroundColor: AppStyles.secondaryColor,
+                                      content: Text(
+                                        "${product!.title} added to cart",
+                                        style: AppStyles.extrasmallwhite,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      duration: Duration(seconds: 1),
+                                    ),
+                                  )
+                                },
                             icon: const Icon(
                               Icons.shopping_cart_outlined,
                               size: 18,

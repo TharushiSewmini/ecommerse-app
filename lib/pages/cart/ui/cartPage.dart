@@ -1,8 +1,9 @@
 import 'package:ecommerce_app/components/reusableButton.dart';
 import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
 import 'package:ecommerce_app/pages/cart/component/cartCard.dart';
+import 'package:ecommerce_app/pages/checkout/ui/checkout_page.dart';
 import 'package:ecommerce_app/pages/home/bloc/home_bloc.dart';
-import 'package:ecommerce_app/pages/singleProduct/ui/singleProductPage.dart';
+import 'package:ecommerce_app/pages/singleProduct/ui/singleProduct_page.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:ecommerce_app/utils/pageTransition.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +45,7 @@ class _CartState extends State<Cart> {
                         context,
                         CustomPageRoute(
                             page: SingleProductPage(
+                              product: cartItems[index],
                                 category: cartItems[index].category,
                                 description: cartItems[index].description,
                                 image: cartItems[index].image,
@@ -93,7 +95,10 @@ class _CartState extends State<Cart> {
                 SizedBox(
                   height: 4,
                 ),
-                ReusableButton(ButttonText: "Checkout", onClick: () {}),
+                ReusableButton(
+                    ButttonText: "Checkout",
+                    onClick: () => Navigator.push(
+                        context, CustomPageRoute(page: CheckOut()))),
                 Row(
                   children: [],
                 )

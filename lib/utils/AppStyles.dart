@@ -57,8 +57,12 @@ class AppStyles {
   static final TextStyle extrasmallgrey = GoogleFonts.poppins(
       fontSize: 12, fontWeight: FontWeight.w300, color: Colors.grey.shade600);
 
+  static final TextStyle extrasmallwhite = GoogleFonts.poppins(
+      fontSize: 12, fontWeight: FontWeight.w300, color: Colors.white);
+
   // Colors
   static const Color primaryColor = Colors.black;
   static const Color oppositeprimaryColor = Colors.white;
   static const Color secondaryColor = Color(0xff212429);
+  static const Color thirdColor = Color.fromARGB(255, 228, 228, 228);
 }

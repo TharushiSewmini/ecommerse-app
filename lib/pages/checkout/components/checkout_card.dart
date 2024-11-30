@@ -1,17 +1,21 @@
+import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BrowseCard extends StatelessWidget {
+class CheckOutCard extends StatelessWidget {
+  int productId;
   String itemImageuRL;
   String itemName;
   double itemPrice;
-  String itemDescription;
-  BrowseCard(
+  int itemQuantity;
+  CheckOutCard(
       {super.key,
+      required this.productId,
       required this.itemImageuRL,
       required this.itemName,
       required this.itemPrice,
-      required this.itemDescription});
+      required this.itemQuantity});
 
   @override
   Widget build(BuildContext context) {
@@ -48,30 +52,25 @@ class BrowseCard extends StatelessWidget {
               children: [
                 // price
                 Text(
-                  "\$ $itemPrice",
+                  "\$ $itemPrice X $itemQuantity",
                   style: AppStyles.medium,
                 ),
 
                 // product name
                 Text(
                   itemName,
-                  style: AppStyles.medium,
-                  softWrap: true,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-
-                //  description
-                Text(
-                  itemDescription,
-                  softWrap: true,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
                   style: AppStyles.extrasmallgrey,
-                )
+                ),
               ],
             ),
-          )
+          ),
+
+          IconButton(
+              onPressed: () {
+                BlocProvider.of<CartBloc>(context)
+                    .add(RemoveCartEvent(productId));
+              },
+              icon: Icon(Icons.delete_outline_outlined))
 
           // Row
         ],
