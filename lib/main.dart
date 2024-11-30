@@ -1,6 +1,8 @@
 import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
 import 'package:ecommerce_app/pages/home/bloc/home_bloc.dart';
 import 'package:ecommerce_app/pages/landing/ui/landing_page.dart';
+import 'package:ecommerce_app/pages/login/bloc/auth_bloc.dart';
+import 'package:ecommerce_app/pages/login/ui/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,6 +12,8 @@ void main() {
         create: (context) => HomeBloc()..add(HomeInitialEvent(""))),
     BlocProvider<CartBloc>(
         create: (context) => CartBloc()..add(CartInitialEvent())),
+    BlocProvider<AuthBloc>(
+        create: (context) => AuthBloc()..add(AuthInitialEvent())),
   ], child: const MyApp()));
 }
 
@@ -34,7 +38,7 @@ class MyApp extends StatelessWidget {
             brightness: Brightness.light),
         useMaterial3: true,
       ),
-      home: Landing(),
+      home: Login(),
     );
   }
 }

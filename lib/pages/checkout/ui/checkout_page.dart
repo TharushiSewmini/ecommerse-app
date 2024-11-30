@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/components/reusableButton.dart';
 import 'package:ecommerce_app/components/reusable_textfield.dart';
-import 'package:ecommerce_app/pages/checkout/components/checkout_card.dart';
+import 'package:ecommerce_app/pages/checkout/ui/components/checkout_card.dart';
 import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
 import 'package:ecommerce_app/pages/home/ui/home_page.dart';
 import 'package:ecommerce_app/pages/landing/ui/landing_page.dart';
@@ -26,10 +26,11 @@ class _CheckOutState extends State<CheckOut> {
 
   // place an order functionality
   void placeAnOrder() {
+    // input field validation
     if (nameController.text.trim().isNotEmpty &&
-      emailController.text.trim().isNotEmpty &&
-      phoneController.text.trim().isNotEmpty &&
-      addressController.text.trim().isNotEmpty) {
+        emailController.text.trim().isNotEmpty &&
+        phoneController.text.trim().isNotEmpty &&
+        addressController.text.trim().isNotEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: AppStyles.successColor,

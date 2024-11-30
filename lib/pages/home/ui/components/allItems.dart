@@ -20,19 +20,22 @@ class AllItems extends StatefulWidget {
 
 List<DealsBanner> dealsBanners = [
   DealsBanner(
-      dealImageUrl: 'assets/deals.png',
+      dealImageUrl:
+          'https://images.pexels.com/photos/3675621/pexels-photo-3675621.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       dealCategory: "Microphones",
       dealPrice: "107.87",
       dealName: "Rode PodMic",
       dealDescription: "Dynamic microphone, Speaker microphone"),
   DealsBanner(
-      dealImageUrl: 'assets/earphone.png',
+      dealImageUrl:
+          'https://images.pexels.com/photos/205926/pexels-photo-205926.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       dealCategory: "Microphones",
       dealPrice: "107.87",
       dealName: "Rode PodMic",
       dealDescription: "Dynamic microphone, Speaker microphone"),
   DealsBanner(
-      dealImageUrl: 'assets/headset.png',
+      dealImageUrl:
+          'https://images.pexels.com/photos/3394666/pexels-photo-3394666.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       dealCategory: "Microphones",
       dealPrice: "107.87",
       dealName: "Rode PodMic",

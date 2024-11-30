@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/components/reusableButton.dart';
 import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
-import 'package:ecommerce_app/pages/cart/component/cartCard.dart';
+import 'package:ecommerce_app/pages/cart/ui/component/cartCard.dart';
 import 'package:ecommerce_app/pages/checkout/ui/checkout_page.dart';
 import 'package:ecommerce_app/pages/home/bloc/home_bloc.dart';
 import 'package:ecommerce_app/pages/singleProduct/ui/singleProduct_page.dart';

@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/pages/cart/bloc/cart_bloc.dart';
-import 'package:ecommerce_app/pages/cart/component/calculationRow.dart';
+import 'package:ecommerce_app/pages/cart/ui/component/calculationRow.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

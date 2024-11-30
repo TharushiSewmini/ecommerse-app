@@ -46,7 +46,7 @@ class DealsCart extends StatelessWidget {
                 width: double.maxFinite,
                 height: 200,
                 padding: EdgeInsets.all(20),
-                child: Image.asset(
+                child: Image.network(
                   dealImageUrl,
                 
                   fit: BoxFit.cover,
@@ -66,7 +66,7 @@ class DealsCart extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  Text(dealPrice, style: AppStyles.normalRed),
+                  Text( "\$$dealPrice", style: AppStyles.normalRed),
                   Text(dealName, style: AppStyles.largeLight),
                   Text(dealDescription, style: AppStyles.smallGrey)
                 ],

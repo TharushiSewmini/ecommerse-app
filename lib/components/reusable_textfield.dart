@@ -15,7 +15,7 @@ class ReusableTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50,
+      height: 54,
       width: double.maxFinite,
       child: TextField(
           controller: controller,
@@ -27,8 +27,8 @@ class ReusableTextField extends StatelessWidget {
                       size: 30,
                     )
                   : null,
-              labelText: placeHolderText,
-              labelStyle: AppStyles.normalLight,
+              hintText: placeHolderText,
+              hintStyle: AppStyles.normalLight,
               focusColor: Colors.grey.shade200,
               filled: true,
               fillColor: Colors.grey.shade200,
