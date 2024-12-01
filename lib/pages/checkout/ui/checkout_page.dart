@@ -6,6 +6,7 @@ import 'package:ecommerce_app/pages/landing/ui/landing_page.dart';
 import 'package:ecommerce_app/utils/AppStyles.dart';
 import 'package:ecommerce_app/utils/pageTransition.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CheckOut extends StatefulWidget {
@@ -42,6 +43,10 @@ class _CheckOutState extends State<CheckOut> {
           dismissDirection: DismissDirection.down,
         ),
       );
+
+     
+      BlocProvider.of<CartBloc>(context)
+          .add(clearWholeCart());
       // navigatate to home
       Navigator.push(context, CustomPageRoute(page: const Landing()));
     } else {

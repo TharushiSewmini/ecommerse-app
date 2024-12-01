@@ -17,6 +17,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         cartDecreaseQuantityButtonClickedEvent);
     on<AddOrUpdateCartEvent>(addOrUpdateCart);
     on<RemoveCartEvent>(removeCart);
+    on<clearWholeCart>(clearwholecart);
   }
 
 // calculating total
@@ -82,5 +83,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       _cartItems.removeAt(existItemIndex);
     }
     emit(CartUpdatedState(cartItems: _cartItems, total: calculateTotal()));
+  }
+
+  FutureOr<void> clearwholecart(clearWholeCart event, Emitter<CartState> emit) {
+    emit(CartUpdatedState(cartItems: const [], total: 0));
   }
 }

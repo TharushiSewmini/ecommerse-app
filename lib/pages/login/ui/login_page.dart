@@ -39,7 +39,7 @@ class Login extends StatelessWidget {
                     backgroundColor: AppStyles.successColor,
                     content: Text(
                       "Login Successful!",
-                      style: AppStyles.small,
+                      style: AppStyles.smallWhite,
                       textAlign: TextAlign.center,
                     )),
               );

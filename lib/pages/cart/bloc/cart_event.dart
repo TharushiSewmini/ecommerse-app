@@ -29,3 +29,7 @@ class RemoveCartEvent extends CartEvent {
   final int productId;
   RemoveCartEvent(this.productId);
 }
+
+class clearWholeCart extends CartEvent{
+  
+}
