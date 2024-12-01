@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 class ProductService {
   final String baseUrl = "https://fakestoreapi.com/products";
 
+// fetch all products
   Future<List<Product>> fetchProducts() async {
     final response = await http.get(Uri.parse(baseUrl));
 
@@ -16,6 +17,8 @@ class ProductService {
     }
   }
 
+
+// fetch all products by category
   Future<List<Product>> fetchSepearetCategoriesProducts(String category) async {
     String url = baseUrl + (category.isNotEmpty ? "/category/$category" : "");
     final resonse = await http.get(Uri.parse(url));

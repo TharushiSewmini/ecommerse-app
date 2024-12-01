@@ -17,7 +17,7 @@ class CheckOut extends StatefulWidget {
 }
 
 class _CheckOutState extends State<CheckOut> {
-  // Controllers for text fields
+  // Controllers 
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -87,14 +87,13 @@ class _CheckOutState extends State<CheckOut> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Header Text
+                
                 Text(
                   "Enter Shipping Details",
                   style: AppStyles.normal,
                 ),
                 const SizedBox(height: 20),
 
-                // Input Fields
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.4,
                   width: double.maxFinite,
@@ -183,7 +182,7 @@ class _CheckOutState extends State<CheckOut> {
             ),
           );
         } else {
-          // Default fallback
+         
           return const Center(
             child: Text("Unexpected state."),
           );
